@@ -3,13 +3,15 @@ import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import Landing from "./Landing";
 import Results from "./Results";
+
+const points = {
+  yes:0,
+  no:0,
+  unsure:0
+}
 const questions = [
   {
-    Q:'Are you from Earth?',
-    A: {
-      o:0,
-      
-    }
+    Q:'Are you from Earth?'
   },
   {
     Q:'Are you currently or have ever lived in space? This means not on a planet'
@@ -130,15 +132,17 @@ function Qs () {
   const [back, setBack] = React.useState(false)
   const [num, setNum] = React.useState(0)
 
-  function nextQ () {
+  function nextQ (ans) {
     let newNum = num+1;
     setNum(newNum)
+    points[ans] += 1
+    console.log(points)
   }
 
   if (back === true) {
     return (
       <>
-        <Landing />
+        <Landing/>
       </>
     )
   }
@@ -146,7 +150,7 @@ function Qs () {
   if (num === 21) {
     return (
       <>
-        <Results />
+        <Results answers={points} />
       </>
     )
   }
@@ -168,13 +172,13 @@ function Qs () {
                 {questions[num]['Q']}
               </Box>
               <div>
-                <Button variant="text" sx={buttonStyle} onClick={nextQ}>Yes</Button>
+                <Button variant="text" sx={buttonStyle} onClick={() =>{nextQ('yes')}}>Yes</Button>
               </div>
               <div>
-                <Button variant="text" sx={buttonStyle} onClick={nextQ}>Unsure</Button>
+                <Button variant="text" sx={buttonStyle} onClick={() =>{nextQ('unsure')}}>Unsure</Button>
               </div>
               <div>
-                <Button variant="text" sx={buttonStyle} onClick={nextQ}>No</Button>
+                <Button variant="text" sx={buttonStyle} onClick={() =>{nextQ('no')}}>No</Button>
               </div>
             </Box>
       </>

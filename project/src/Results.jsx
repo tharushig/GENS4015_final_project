@@ -60,9 +60,9 @@ const buttonStyle = {
     fontSize:'25px'
     }
 
-function Results () {
+function Results (answers) {
     const [back, setBack] = React.useState(false)
-  
+    console.log(answers)
     if (back === true) {
       return (
         <>
