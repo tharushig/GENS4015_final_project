@@ -4,11 +4,12 @@ import Button from '@mui/material/Button';
 import Landing from "./Landing";
 import Results from "./Results";
 
-const points = {
+let points = {
   yes:0,
   no:0,
   unsure:0
 }
+
 const questions = [
   {
     Q:'Are you from Earth?'
@@ -77,28 +78,28 @@ const questions = [
 
 
 const headerStyle = {
-    backgroundColor:'rgb(154, 75, 255)',
-    width:'100vw', 
-    height:'15vh', 
-    
-  }
+  backgroundColor:'rgb(154, 75, 255)',
+  width:'100vw', 
+  height:'15vh', 
+  
+}
 const headerTextStyle = {
-height:'15vh', 
-width:'15vw', 
-display:'flex', 
-alignItems:'center', 
-justifyContent:'center',
-color:'white',
-fontFamily: 'Irish Grover',
-textTransform: 'capitalize',
-fontSize:'25px'
+  height:'15vh', 
+  width:'15vw', 
+  display:'flex', 
+  alignItems:'center', 
+  justifyContent:'center',
+  color:'white',
+  fontFamily: 'Irish Grover',
+  textTransform: 'capitalize',
+  fontSize:'25px'
 }
 
 const buttonStyle = {
   color:'white',
   backgroundColor: 'rgb(154, 75, 255)',
   '&:hover': {
-  backgroundColor: 'indigo'
+    backgroundColor: 'indigo'
   },
   fontSize: '25px',
   fontFamily: 'Inknut Antiqua',
@@ -126,17 +127,25 @@ const numStyle = {
   fontFamily: 'Inkut Antiqua',
   fontSize:'20px',
   paddingTop:'20px'
-  }
+}
 
 function Qs () {
+  
+
   const [back, setBack] = React.useState(false)
   const [num, setNum] = React.useState(0)
 
+  React.useEffect(() => {
+    points['yes'] = 0
+    points['no'] = 0
+    points['unsure'] = 0
+  }, [])
+  
   function nextQ (ans) {
     let newNum = num+1;
     setNum(newNum)
     points[ans] += 1
-    console.log(points)
+    console.log(points['yes'])
   }
 
   if (back === true) {
@@ -148,9 +157,14 @@ function Qs () {
   }
 
   if (num === 21) {
+    const answers = {
+      yes: points['yes'],
+      no: points['no'],
+      unsure: points['unsure']
+    }
     return (
       <>
-        <Results answers={points} />
+        <Results answers={answers} />
       </>
     )
   }

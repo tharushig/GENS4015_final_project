@@ -62,6 +62,7 @@ const buttonStyle = {
 
 function Results (answers) {
     const [back, setBack] = React.useState(false)
+    let final = ''
     console.log(answers)
     if (back === true) {
       return (
@@ -70,7 +71,52 @@ function Results (answers) {
         </>
       )
     }
+    const y = answers.answers['yes']
+    console.log(y)
+    const n = answers.answers['no']
+    console.log(n)
+    const u = answers.answers['unsure']
+    console.log(u)
+    if (y===n && n===u) {
+        final = result['a']
+    }
+    else if (y === n && n < u) {
 
+    }
+    else if (y === n && n > u) {
+        
+    }
+    else if (y > n && n === u) {
+        final = result['n']
+
+    }
+    else if (y < n && n === u) {
+        
+    }
+    else if (y > u && n === u) {
+        
+    }
+    else if (y < u && n === u) {
+        
+    }
+    else if (y > n && n > u) {
+        
+    }
+    else if (y > u && u > n) {
+        
+    }
+    else if (n > u && u > y) {
+        final = result['o']
+    }
+    else if (n > y && y > u) {
+        
+    }
+    else if (u > y && y > n) {
+        
+    }
+    else if (u > n && n > y) {
+        
+    }
     return (
         <>
             <Box sx={headerStyle}>
@@ -82,10 +128,10 @@ function Results (answers) {
             </Box>
             <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', height:'70vh', gap:'40px'}}>
                 <Box sx={{fontSize:'40px'}}>
-                    You have the personality trait of {result['o']['name']}!!
+                    You have the personality trait of {final['name']}!!
                 </Box>
                 <Box sx={{backgroundColor:'rgb(154, 75, 255)', fontSize:'20px', height:'30vh', width:'40vw', justifyContent:'center', display:'flex'}}>
-                    {result['o']['description']}
+                    {final['description']}
                 </Box>
             </Box>
             <Button variant="contained" sx={buttonStyle} onClick={() => {setBack(true)}}>Back to home</Button>
