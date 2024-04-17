@@ -6,23 +6,23 @@ import Landing from "./Landing";
 const result = {
     o: {
         name: 'Openness',
-        description: 'You are curious and knowledgable'
+        description: 'You are curious and love to deep dive and learn more about things that interest you. You are also someone who has a creative flair and thinks outside the box. You are great at problem-solving and often use your imagination for such problems or just for fun. You are considered to be intelligent and have a wide knowledge base.'
     },
     e: {
         name: 'Extraversion',
-        description: 'sociability, assertiveness, opposite of introversion'
+        description: 'You are a social butterfly. You love to go and interact with others and be in a public setting. You are charismatic, outgoing and always up for anything. You get along easily with others and tend to have aspects of assertiveness. You tend to take charge rather than sit back, and take life into your own hands.'
     },
     a: {
         name:'Agreeableness',
-        description: 'compassion, respectfulness, trust in others'
+        description: 'You are very compassionate and understand others well. You are very easy to talk to and love helping people. You are quick to trust others and others find it easy to trust you. You value respect and treat everyone as equals. You are laid back and easy to please. You are often someone who gives advice.'
     },
     c: {
         name: 'Conscientiousness',
-        description: 'organization, productiveness, responsibility'
+        description: 'You tend to lead and take charge. You are great at balancing tasks and are always on top of things. You are well organized and thrive on productivity. You are capable of handling stress and can take on many responsibilities without a sweat. You take control and plan ahead for the future.'
     },
     n: {
         name:'Neuroticism',
-        description: 'anxiety and depression'
+        description: 'You tend to be emotionally volatile and proned to anxiety and depression. But this doesn\'t mean that that is your fate. Because of this you are careful and wary. You tend to make choices that keep you and others safe. You consider the option with the least risk. You are conservative and keep to yourself.'
     }
 }
 
@@ -63,7 +63,6 @@ const buttonStyle = {
 function Results (answers) {
     const [back, setBack] = React.useState(false)
     let final = ''
-    console.log(answers)
     if (back === true) {
       return (
         <>
@@ -81,41 +80,43 @@ function Results (answers) {
         final = result['a']
     }
     else if (y === n && n < u) {
-
+        final = result['e']
     }
     else if (y === n && n > u) {
-        
+        final = result['e']
     }
     else if (y > n && n === u) {
-        final = result['n']
-
+        final = result['c']
     }
     else if (y < n && n === u) {
-        
+        final = result['n']
     }
     else if (y > u && n === u) {
-        
-    }
-    else if (y < u && n === u) {
-        
-    }
-    else if (y > n && n > u) {
-        
-    }
-    else if (y > u && u > n) {
-        
-    }
-    else if (n > u && u > y) {
         final = result['o']
     }
+    else if (y < u && n === u) {
+        final = result['c']
+    }
+    else if (y > n && n > u) {
+        final = result['o']
+    }
+    else if (y > u && u > n) {
+        final = result['a']
+    }
+    else if (n > u && u > y) {
+        final = result['n']
+    }
     else if (n > y && y > u) {
-        
+        final = result['c']
     }
     else if (u > y && y > n) {
-        
+        final = result['e']
     }
     else if (u > n && n > y) {
-        
+        final = result['c']
+    }
+    else {
+        final = result['a']
     }
     return (
         <>
@@ -126,12 +127,14 @@ function Results (answers) {
                     </div>
                 </Box>
             </Box>
-            <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', height:'70vh', gap:'40px'}}>
+            <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', height:'70vh', gap:'40px', fontFamily:'Inkut Antiqua'}}>
                 <Box sx={{fontSize:'40px'}}>
                     You have the personality trait of {final['name']}!!
                 </Box>
-                <Box sx={{backgroundColor:'rgb(154, 75, 255)', fontSize:'20px', height:'30vh', width:'40vw', justifyContent:'center', display:'flex'}}>
-                    {final['description']}
+                <Box sx={{backgroundColor:'rgb(154, 75, 255)', fontSize:'22px', height:'30vh', width:'40vw', justifyContent:'center', display:'flex'}}>
+                    <Box sx={{textAlign:'justify', width:'35vw', paddingTop:'3%', lineHeight:'30px'}}>
+                        {final['description']}
+                    </Box>
                 </Box>
             </Box>
             <Button variant="contained" sx={buttonStyle} onClick={() => {setBack(true)}}>Back to home</Button>

@@ -145,7 +145,6 @@ function Qs () {
     let newNum = num+1;
     setNum(newNum)
     points[ans] += 1
-    console.log(points['yes'])
   }
 
   if (back === true) {
