@@ -12,7 +12,6 @@ const buttonStyle = {
   },
   fontSize: '35px',
   fontFamily: 'Inknut Antiqua',
-  textTransform: 'lowercase',
   textTransform: 'capitalize',
   fontWeight: 'bold',
   width: '20vw',
@@ -45,7 +44,6 @@ const headerTextStyle = {
   justifyContent:'center',
   color:'white',
   fontFamily: 'Irish Grover',
-  textTransform: 'lowercase',
   textTransform: 'capitalize',
   fontSize:'25px'
 }
@@ -70,13 +68,13 @@ function Landing () {
           
       </Box>
       <Box sx={boxStyle}>
-        <div>
-          Start your search to finding yourself!
-        </div>
-        <div>
-          <Button variant="contained" sx={buttonStyle} onClick={() => {setStart(true)}}>Start</Button>
-        </div>
-      </Box>
+            <div>
+              Start your search to finding yourself!
+            </div>
+            <div>
+              <Button variant="contained" sx={buttonStyle} onClick={() => {setStart(true)}}>Start</Button>
+            </div>
+          </Box>  
     </>
     
     );

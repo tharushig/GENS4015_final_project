@@ -88,7 +88,6 @@ alignItems:'center',
 justifyContent:'center',
 color:'white',
 fontFamily: 'Irish Grover',
-textTransform: 'lowercase',
 textTransform: 'capitalize',
 fontSize:'25px'
 }
@@ -101,7 +100,6 @@ const buttonStyle = {
   },
   fontSize: '25px',
   fontFamily: 'Inknut Antiqua',
-  textTransform: 'lowercase',
   textTransform: 'capitalize',
   width: '30vw',
   height: '10vh'
@@ -144,6 +142,15 @@ function Qs () {
       </>
     )
   }
+
+  if (num === 21) {
+    return (
+      <>
+        <Results />
+      </>
+    )
+  }
+
   return (
       <>
         <Box sx={headerStyle}>
@@ -153,13 +160,7 @@ function Qs () {
                 </div>
             </Box>
         </Box>
-        
-        {num === 21
-          ? <>
-            <Results />
-          </>
-          : <>
-            <Box sx={numStyle}>
+        <Box sx={numStyle}>
               Q{num+1} of 21
             </Box>
             <Box sx={answersStyle}>
@@ -176,9 +177,6 @@ function Qs () {
                 <Button variant="text" sx={buttonStyle} onClick={nextQ}>No</Button>
               </div>
             </Box>
-          </>
-        }
-        
       </>
   )
 }
