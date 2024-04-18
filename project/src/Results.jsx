@@ -26,6 +26,22 @@ const result = {
     }
 }
 
+const answerTextStyle = {
+    textAlign:'justify', 
+    width:'35vw', 
+    paddingTop:'3%', 
+    lineHeight:'30px'
+}
+
+const answerBoxStyle = {
+    backgroundColor:'rgb(154, 75, 255)', 
+    fontSize:'22px', 
+    height:'30vh', 
+    width:'40vw', 
+    justifyContent:'center', 
+    display:'flex'
+}
+
 const buttonStyle = {
     color:'white',
     backgroundColor: 'rgb(154, 75, 255)',
@@ -40,15 +56,25 @@ const buttonStyle = {
     position: 'relative',
     left: '85%'
     
-  }
+}
 
-  const headerStyle = {
+const resultHeaderStyle = {
+    display:'flex', 
+    alignItems:'center', 
+    justifyContent:'center', 
+    flexDirection:'column', 
+    height:'70vh', 
+    gap:'40px', fontFamily:'Inkut Antiqua',
+    fontSize:'40px'
+}
+
+const headerStyle = {
     backgroundColor:'rgb(154, 75, 255)',
     width:'100vw', 
     height:'15vh', 
     
-  }
-    const headerTextStyle = {
+}
+const headerTextStyle = {
     height:'15vh', 
     width:'15vw', 
     display:'flex', 
@@ -58,65 +84,27 @@ const buttonStyle = {
     fontFamily: 'Irish Grover',
     textTransform: 'capitalize',
     fontSize:'25px'
-    }
+}
 
 function Results (answers) {
     const [back, setBack] = React.useState(false)
-    let final = ''
     if (back === true) {
-      return (
-        <>
+        return (
+            <>
           <Landing />
         </>
       )
     }
-    const y = answers.answers['yes']
-    console.log(y)
-    const n = answers.answers['no']
-    console.log(n)
-    const u = answers.answers['unsure']
-    console.log(u)
-    if (y===n && n===u) {
-        final = result['a']
-    }
-    else if (y === n && n < u) {
-        final = result['e']
-    }
-    else if (y === n && n > u) {
-        final = result['e']
-    }
-    else if (y > n && n === u) {
-        final = result['c']
-    }
-    else if (y < n && n === u) {
-        final = result['n']
-    }
-    else if (y > u && n === u) {
-        final = result['o']
-    }
-    else if (y < u && n === u) {
-        final = result['c']
-    }
-    else if (y > n && n > u) {
-        final = result['o']
-    }
-    else if (y > u && u > n) {
-        final = result['a']
-    }
-    else if (n > u && u > y) {
-        final = result['n']
-    }
-    else if (n > y && y > u) {
-        final = result['c']
-    }
-    else if (u > y && y > n) {
-        final = result['e']
-    }
-    else if (u > n && n > y) {
-        final = result['c']
-    }
-    else {
-        final = result['a']
+
+    let final = []
+    let maxValue = -1000;
+    for (let key in answers.answers) {
+      if (answers.answers[key] > maxValue) {
+        final = [key];
+        maxValue = answers.answers[key];
+      } else if (answers.answers[key] === maxValue) {
+        final.push(key);
+      }
     }
     return (
         <>
@@ -127,13 +115,13 @@ function Results (answers) {
                     </div>
                 </Box>
             </Box>
-            <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', flexDirection:'column', height:'70vh', gap:'40px', fontFamily:'Inkut Antiqua'}}>
-                <Box sx={{fontSize:'40px'}}>
-                    You have the personality trait of {final['name']}!!
+            <Box sx={resultHeaderStyle}>
+                <Box>
+                    You have the personality trait of {result[final[0]]['name']}!!
                 </Box>
-                <Box sx={{backgroundColor:'rgb(154, 75, 255)', fontSize:'22px', height:'30vh', width:'40vw', justifyContent:'center', display:'flex'}}>
-                    <Box sx={{textAlign:'justify', width:'35vw', paddingTop:'3%', lineHeight:'30px'}}>
-                        {final['description']}
+                <Box sx={answerBoxStyle}>
+                    <Box sx={answerTextStyle}>
+                        {result[final[0]]['description']}
                     </Box>
                 </Box>
             </Box>

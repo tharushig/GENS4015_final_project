@@ -4,78 +4,45 @@ import Button from '@mui/material/Button';
 import Landing from "./Landing";
 import Results from "./Results";
 
-let points = {
-  yes:0,
-  no:0,
-  unsure:0
-}
-
 const questions = [
-  {
-    Q:'Are you from Earth?'
-  },
-  {
-    Q:'Are you currently or have ever lived in space? This means not on a planet'
-  },
-  {
-    Q:'Do you like to help people?'
-  },
-  {
-    Q:'Do you like to be told what to do?'
-  },
-  {
-    Q:'Do you tend to take charge and tell people what to do?'
-  },
-  {
-    Q:'Do you like interacting with other beings?'
-  },
-  {
-    Q:'Do you like to plan and control everything?'
-  },
-  {
-    Q:'Do you forget things often?'
-  },
-  {
-    Q:'Are you usually careful?',
-  },
-  {
-    Q:'Do you have strong opinions?'
-  },
-  {
-    Q:'Do you argue with others?'
-  },
-  {
-    Q:'Do you enjoy learning new things?'
-  },
-  {
-    Q:'Do you tend to overthink or worry?'
-  },
-  {
-    Q:'Are you quick to trust people?'
-  },
-  {
-    Q:'Do you prefer to stay home or go out?'
-  },
-  {
-    Q:'Would you consider yourself creative?'
-  },
-  {
-    Q:'Do you like to explore?'
-  },
-  {
-    Q:'Would you consider yourself a risk-taker?'
-  },
-  {
-    Q:'Do you tend to voice your opinions?'
-  },
-  {
-    Q:'Are you able to sympathize or empathise with others?'
-  },
-  {
-    Q:'Do you handle multitasking well?'
-  },
-]
+  "Are you from Earth?",
+  "Are you currently or have ever lived in space? This means not on a planet",
+  "Do you like to help people?",
+  "Do you like to be told what to do?",
+  "Do you tend to take charge and tell people what to do?",
+  "Do you like interacting with other beings?",
+  "Do you like to plan and control everything?",
+  "Do you forget things often?",
+  "Are you usually careful?",
+  "Do you have strong opinions?",
+  "Do you argue with others?",
+  "Do you enjoy learning new things?",
+  "Do you tend to overthink or worry?",
+  "Are you quick to trust people?",
+  "Do you prefer to stay home or go out?",
+  "Would you consider yourself creative?",
+  "Do you like to explore?",
+  "Would you consider yourself a risk-taker?",
+  "Do you tend to voice your opinions?",
+  "Are you able to sympathize or empathize with others?",
+  "Do you handle multitasking well?"
+];
 
+
+const pointAssignments = {
+  o: 0,
+  e: 0,
+  a: 0,
+  c: 0,
+  n: 0
+};
+
+const oQs = [5, 10, 15, 16, 19];
+const cQs = [6, 7, 11, 16, 17, 18, 20];
+const eQs = [2, 4, 7, 12, 14];
+const aQs = [2, 4, 8, 9, 14, 15, 19];
+const nYesQs = [0, 1, 3, 13];
+const nNoQs = [0, 1, 3, 13];
 
 const headerStyle = {
   backgroundColor:'rgb(154, 75, 255)',
@@ -130,21 +97,51 @@ const numStyle = {
 }
 
 function Qs () {
-  
-
   const [back, setBack] = React.useState(false)
   const [num, setNum] = React.useState(0)
-
-  React.useEffect(() => {
-    points['yes'] = 0
-    points['no'] = 0
-    points['unsure'] = 0
-  }, [])
   
-  function nextQ (ans) {
+  React.useEffect(() => {
+    pointAssignments['o'] = 0
+    pointAssignments['e'] = 0
+    pointAssignments['a'] = 0
+    pointAssignments['n'] = 0
+    pointAssignments['c'] = 0
+  }, [])
+
+  function yesQ () {
+    if (aQs.includes(num)) {
+      pointAssignments['a'] += 1
+    }
+    if (oQs.includes(num)) {
+      pointAssignments['o'] += 1
+    }
+    if (cQs.includes(num)) {
+      pointAssignments['c'] += 1
+    }
+    if (eQs.includes(num)) {
+      pointAssignments['e'] += 1
+    }
+    if (nYesQs.includes(num)) {
+      pointAssignments['n'] += 1
+    }
+    nextQ()
+    
+  }
+
+  function NoQ () {
+    if (nNoQs.includes(num)) {
+      pointAssignments['n'] -= 1
+    }
+    nextQ()
+  }
+  
+  function Unsure () {
+    nextQ()
+  }
+
+  function nextQ () {
     let newNum = num+1;
     setNum(newNum)
-    points[ans] += 1
   }
 
   if (back === true) {
@@ -155,15 +152,19 @@ function Qs () {
     )
   }
 
-  if (num === 21) {
-    const answers = {
-      yes: points['yes'],
-      no: points['no'],
-      unsure: points['unsure']
-    }
+
+  if (back === true) {
     return (
       <>
-        <Results answers={answers} />
+        <Landing/>
+      </>
+    )
+  }
+
+  if (num===21) {
+    return (
+      <>
+        <Results answers={pointAssignments} />
       </>
     )
   }
@@ -182,16 +183,16 @@ function Qs () {
             </Box>
             <Box sx={answersStyle}>
               <Box sx={{fontSize: '40px', fontFamily:'Inkut Antiqua'}}>
-                {questions[num]['Q']}
+                {questions[num]}
               </Box>
               <div>
-                <Button variant="text" sx={buttonStyle} onClick={() =>{nextQ('yes')}}>Yes</Button>
+                <Button variant="text" sx={buttonStyle} onClick={yesQ}>Yes</Button>
               </div>
               <div>
-                <Button variant="text" sx={buttonStyle} onClick={() =>{nextQ('unsure')}}>Unsure</Button>
+                <Button variant="text" sx={buttonStyle} onClick={Unsure}>Unsure</Button>
               </div>
               <div>
-                <Button variant="text" sx={buttonStyle} onClick={() =>{nextQ('no')}}>No</Button>
+                <Button variant="text" sx={buttonStyle} onClick={NoQ}>No</Button>
               </div>
             </Box>
       </>
