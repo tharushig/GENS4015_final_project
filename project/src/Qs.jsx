@@ -6,7 +6,7 @@ import Results from "./Results";
 
 const questions = [
   "Are you from Earth?",
-  "Are you currently or have ever lived in space? This means not on a planet",
+  "Are you currently or have ever lived in space? This means not on a planet.",
   "Do you like to help people?",
   "Do you like to be told what to do?",
   "Do you tend to take charge and tell people what to do?",
@@ -19,7 +19,7 @@ const questions = [
   "Do you enjoy learning new things?",
   "Do you tend to overthink or worry?",
   "Are you quick to trust people?",
-  "Do you prefer to stay home or go out?",
+  "Do you prefer to go out rather than stay home?",
   "Would you consider yourself creative?",
   "Do you like to explore?",
   "Would you consider yourself a risk-taker?",
@@ -39,7 +39,7 @@ const pointAssignments = {
 
 const oQs = [5, 10, 15, 16, 19];
 const cQs = [6, 7, 11, 16, 17, 18, 20];
-const eQs = [2, 4, 7, 12, 14];
+const eQs = [2, 4, 7, 12, 14, 15];
 const aQs = [2, 4, 8, 9, 14, 15, 19];
 const nYesQs = [0, 1, 3, 13];
 const nNoQs = [0, 1, 3, 13];
