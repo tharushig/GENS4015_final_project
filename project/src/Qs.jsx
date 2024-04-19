@@ -47,9 +47,9 @@ const nNoQs = [0, 1, 3, 13];
 const headerStyle = {
   backgroundColor:'rgb(154, 75, 255)',
   width:'100vw', 
-  height:'15vh', 
-  
+  height:'15vh',   
 }
+
 const headerTextStyle = {
   height:'15vh', 
   width:'15vw', 
@@ -57,7 +57,7 @@ const headerTextStyle = {
   alignItems:'center', 
   justifyContent:'center',
   color:'white',
-  fontFamily: 'Irish Grover',
+  fontFamily: 'Papyrus',
   textTransform: 'capitalize',
   fontSize:'25px'
 }
@@ -69,7 +69,7 @@ const buttonStyle = {
     backgroundColor: 'indigo'
   },
   fontSize: '25px',
-  fontFamily: 'Inknut Antiqua',
+  fontFamily: 'Copperplate',
   textTransform: 'capitalize',
   width: '30vw',
   height: '10vh'
@@ -91,8 +91,8 @@ const numStyle = {
   display:'flex', 
   justifyContent:'center' ,
   color:'white',
-  fontFamily: 'Inkut Antiqua',
-  fontSize:'20px',
+  fontFamily: 'Copperplate',
+  fontSize:'25px',
   paddingTop:'20px'
 }
 
@@ -182,7 +182,7 @@ function Qs () {
               Q{num+1} of 21
             </Box>
             <Box sx={answersStyle}>
-              <Box sx={{fontSize: '40px', fontFamily:'Inkut Antiqua'}}>
+              <Box sx={{fontSize: '40px', fontFamily:'Copperplate', textAlign:'center', width:'70vw'}}>
                 {questions[num]}
               </Box>
               <div>

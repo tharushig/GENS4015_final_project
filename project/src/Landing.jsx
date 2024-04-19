@@ -11,7 +11,7 @@ const buttonStyle = {
   backgroundColor: 'indigo'
   },
   fontSize: '35px',
-  fontFamily: 'Inknut Antiqua',
+  fontFamily: 'Copperplate',
   textTransform: 'capitalize',
   fontWeight: 'bold',
   width: '20vw',
@@ -26,8 +26,8 @@ const boxStyle = {
   gap: '100px',
   fontSize: '60px',
   color: 'white',
-  fontFamily: 'Inknut Antiqua',
-  fontWeight: 'bold',
+  fontFamily: '	Copperplate',
+  fontWeight: 'none',
   backgroundColor: 'rgb(53, 52, 52)'
 }
   const headerStyle = {
@@ -43,7 +43,7 @@ const headerTextStyle = {
   alignItems:'center', 
   justifyContent:'center',
   color:'white',
-  fontFamily: 'Irish Grover',
+  fontFamily: 'Papyrus',
   textTransform: 'capitalize',
   fontSize:'25px'
 }

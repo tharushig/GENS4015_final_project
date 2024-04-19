@@ -27,7 +27,7 @@ const result = {
 }
 
 const answerTextStyle = {
-    textAlign:'justify', 
+    textAlign:'left', 
     width:'35vw', 
     paddingTop:'3%', 
     lineHeight:'30px'
@@ -36,7 +36,7 @@ const answerTextStyle = {
 const answerBoxStyle = {
     backgroundColor:'rgb(154, 75, 255)', 
     fontSize:'22px', 
-    height:'30vh', 
+    height:'40vh', 
     width:'40vw', 
     justifyContent:'center', 
     display:'flex'
@@ -48,8 +48,8 @@ const buttonStyle = {
     '&:hover': {
     backgroundColor: 'indigo'
     },
-    fontSize: '17px',
-    fontFamily: 'Inknut Antiqua',
+    fontSize: '15px',
+    fontFamily: 'Copperplate',
     textTransform: 'capitalize',
     width: '10vw',
     height: '9vh',
@@ -64,7 +64,7 @@ const resultHeaderStyle = {
     justifyContent:'center', 
     flexDirection:'column', 
     height:'70vh', 
-    gap:'40px', fontFamily:'Inkut Antiqua',
+    gap:'40px', fontFamily:'Copperplate',
     fontSize:'40px'
 }
 
@@ -81,7 +81,7 @@ const headerTextStyle = {
     alignItems:'center', 
     justifyContent:'center',
     color:'white',
-    fontFamily: 'Irish Grover',
+    fontFamily: 'Papyrus',
     textTransform: 'capitalize',
     fontSize:'25px'
 }
