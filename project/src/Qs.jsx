@@ -20,12 +20,12 @@ const questions = [
   "Do you tend to overthink or worry?",
   "Are you quick to trust people?",
   "Do you prefer to go out rather than stay home?",
-  "Would you consider yourself creative?",
+  "Have you approached a task in an unconventional way?",
   "Do you like to explore?",
   "Would you consider yourself a risk-taker?",
-  "Do you tend to voice your opinions?",
+  "Are you good at voicing your opinions?",
   "Are you able to sympathize or empathize with others?",
-  "Do you handle multitasking well?"
+  "Are you good at multitasking??"
 ];
 
 

@@ -64,7 +64,8 @@ const resultHeaderStyle = {
     justifyContent:'center', 
     flexDirection:'column', 
     height:'70vh', 
-    gap:'40px', fontFamily:'Copperplate',
+    gap:'40px',
+    fontFamily:'Copperplate',
     fontSize:'40px'
 }
 
